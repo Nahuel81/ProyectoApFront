@@ -1,0 +1,362 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+ background: linear-gradient(90deg, rgba(243,254,245,1) 0%, rgba(230,230,242,1) 26%, rgba(243,254,245,1) 100%);
+  }
+
+
+  /*  */
+  header {
+    background-size: cover;
+  }
+
+.boton{
+    position: relative;
+}
+.banner{
+    border-radius: 0px 0px 15px 15px;
+}
+  /*  */
+  
+  h3 {
+    font-family: "Raleway", sans-serif;
+  }
+  h3:hover{color:blue;}
+  h6{color:blue;}
+  
+  h2:hover{
+  color: blue;
+   font-weight: bold;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: .5s;
+  }
+  
+  a:hover{
+    color: blue;
+  }
+  
+  img {
+    max-width: 100%;
+  }
+  
+
+  
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px;
+    background-color: rgb(217, 209, 209);
+    color: black;
+  }
+  
+  .logoHeader {
+    width: 80px;
+  }
+  
+  nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  ul li {
+    list-style-type: none;
+    margin: 5px;
+    transition: .4s;
+  }
+  
+  ul li:hover{
+    transform: scale(1.2);
+  }
+  
+  nav i {
+    font-size: 1.5em;
+    transition: .4s;
+  }
+  i {
+    font-size: 1em;
+    transition: .4s;
+  }
+  
+  i.iconoLogueo {
+    font-size: 2em;
+    margin: 0 10px;
+  }
+  
+   i:hover{
+    color: #ea4c89;
+    transform: scale(1.2);
+  }
+  
+  
+  .descripcion {
+    position: relative;
+  }
+  
+  .fotoPerfil {
+    width: 220px;
+    border-radius: 50%;
+    position: absolute;
+    top: -180px;
+    left: 20px;
+    border: 4px solid white;
+  }
+  
+  .descripcion__info {
+    margin: 100px 10px 10px 10px;
+    border-radius: 20px; 
+    padding: 20px;
+  }
+   #fs{
+     padding-left: 30px;
+    }
+  .aboutMe {
+    margin: 10px;
+    padding: 20px; 
+    display: flex;
+    background-color:#ffffff80;
+    border: 1px solid white;
+    border-radius: 0px 0px 20px 20px;
+  }
+  
+  .location {
+    font-size: .9em;
+  }
+  .fa-location-dot{
+  padding-right: .5em;
+  color: blue;
+  }
+  
+
+  
+  .contenedor {
+    margin: 15px;
+    padding: 20px;
+    border: 2px solid white;
+    border-radius: 20px;
+    background-color:#ffffff80;
+ 
+  }
+  
+  .contenedor__barraTitulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+  }
+  
+  .contenedor__child {
+    display: flex;
+    margin: 30px 0;
+  }
+  
+  .contenedor img {
+    width: 100px;
+    object-fit: contain;
+    max-height: 100px;
+  }
+  
+  .descripcionPuesto {
+    margin: 0 20px;
+  }
+  
+  .descripcionPuesto__info {
+    display: inline;
+    margin-right: 20px;
+  }
+  
+  .iconosEdicion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+  }
+  .Edit{
+    border: 0px;
+   /*  background-color:#ffffff80; */
+  }
+  
+  .iconosEdicion i {
+    margin: 10px 5px;
+    align-self: flex-start;
+    color: blue;
+  }
+  .iconosEdicion i:hover {
+    
+    color: #ea4c89;
+  }
+
+
+  #tateti{
+    border-radius: 20%;
+    border: 2px solid rgb(216, 208, 208);
+  }
+
+
+  footer {
+    padding: 50px 0;
+  }
+  
+  .copyright {
+    padding-top: 20px;}
+  
+  .top {
+    text-align: center;
+  }
+  
+  
+    .skills-container{
+    display: grid;
+    grid-tempLate-columns: repeat(5, 1fr);
+    justify-content:center;
+    align-items:center;
+    text-align: center;
+    grid-gap:1rem;
+    padding: 1rem 80px;
+    font-size: 1.2rem;
+    }
+    .skills-box{
+    padding: 1rem;
+    color:#000;
+    cursor:pointer;
+    }
+    
+    .skills-title{
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    }
+    
+    .skills-icons{
+    width:60px;
+    z-index:2;
+    height: 60px;
+    }
+    
+    .skills-img{
+    width:90px;
+    height:90px;
+    position: relative;
+    border-radius: 45px;
+    background-color: #fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transition: .5s;
+    }
+    
+    .skills-title h3{
+    color: black;
+    margin-top: 0.5rem;
+    font-size: 1em;
+    }
+    @media screen and (max-width:990px){
+     .skills-container{
+     grid-tempLate-columns: repeat(2, 1fr);
+     padding: 2rem 50px;
+     }
+    }
+    
+    @media screen and (max-width:650px){
+     .skills-container{
+     grid-tempLate-columns:2fr;
+     padding: 2rem 50px;
+     }
+    }
+  
+  
+  
+  @media (max-width: 750px) {
+  
+    .fotoPerfil{
+      width: 150px;
+      top: -160px;
+    }
+  
+    nav ul li a span{
+      display: none;
+    }
+  
+    .welcome{
+      width: 100%;
+      font-size: .5em;
+    }
+  
+    h2{
+      font-size: 1.6em;
+    }
+  
+    .aboutMe__child p{
+      text-align: justify;
+    }
+  
+    .contenedor__child{
+      flex-direction: column;
+      align-items: center
+    }
+  
+    .contenedor__child img{
+      width: 150px;
+      margin: 20px;
+    }
+  
+    .iconosEdicion{
+      margin-top: 10px;
+    }
+  }
+  
+  @media (max-width: 450px){
+    header{
+      min-height:auto;
+    }
+  
+    h1{
+      font-size: 2em;;
+    }
+  
+    .welcome{
+      top: 100px;
+      width: 100%;
+    }
+    
+    .fotoPerfil{
+      width: 100px;
+      top: -110px;
+    }
+    
+    .logoHeader{
+      display: none;
+    }
+  
+    nav{
+      justify-content: center;
+    }
+  
+    .iconoLogueo{
+      position: absolute;
+      top: 15px;
+      right: 10px;
+    }
+    @media (max-width: 500px){
+      .fotoPerfil{
+        width: 100px;
+        top: -140px;
+      }
+      .welcome{
+        width: 100%;
+      }
+    }
+  
+  } 

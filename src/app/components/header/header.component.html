@@ -1,0 +1,144 @@
+<div *ngIf="info">
+<header id="welcome-section">
+  <img src="{{info.ubicacion}}" width="100%" alt="Url Invalida Se utilizo una Portada por Defecto">
+    <!-- cargar portada por defecto -->
+    <div *ngIf="info.ubicacion?.length == 0">
+      <img src="../../../assets/azulbanner.jpg" width="100%" alt="Diego Villan">
+    </div>
+</header>
+<section class="informacion">
+    <div class="descripcion">
+        <img src="{{info.fotoPerfil}}" height="160px" width="100px" alt="Url Invalida"
+            class="fotoPerfil">
+        <div class="descripcion__info">
+            <h2>{{info.nombre}}{{info.apellido}}</h2>
+            <button class=" btn btn-primary Edit"
+            (click)="onOpenModal('edit', info)" data-bs-toggle="modal" data-bs-target="#editInfoModal" *ngIf="isloged()">
+            <i class="fa-solid fa-pen"></i> Editar Perfil <!-- click edit -->
+            </button>
+           <h5>{{info.titulo}}</h5>
+            <h6 class="location"><a href="https://es.wikipedia.org/wiki/Santa_Fe_(Argentina)" target="_blank"><i class="fa-solid fa-location-dot"></i></a>Santa Fe, Argentina</h6>
+        </div>
+    </div>
+    <div class="aboutMe"><p>{{info.descripcion}}</p></div>
+    
+ </section> 
+</div>
+
+<!-- MODAL EDITAR -->
+<div
+  class="modal fade modales"
+  id="editInfoModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="editInfoModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center" id="editInfoModalLabel">
+          {{ info?.nombre }}
+        </h5>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm">
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input
+              type="text"
+              ngModel="{{ info?.nombre }}"
+              name="nombre"
+              class="form-control"
+              id="nombre"
+              aria-describedby="nombre"
+              placeholder="Nombre"
+            />
+          </div>
+          <input
+            type="hidden"
+            ngModel="{{ info?.id }}"
+            name="id"
+            class="form-control"
+            id="id"
+            placeholder=""
+          />
+
+          <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input
+              type="text"
+              ngModel="{{ info?.apellido }}"
+              name="apellido"
+              class="form-control"
+              id="apellido"
+              placeholder="Apellido"
+            />
+          </div>
+          <div class="form-group">
+            <label for="titulo">Titulo</label>
+            <input
+              type="text"
+              ngModel="{{ info?.titulo }}"
+              name="titulo"
+              class="form-control"
+              id="titulo"
+              placeholder="titulo"
+            />
+          </div>
+          <div class="form-group">
+            <label for="descripcion">Descripción</label>
+            <input
+              type="text"
+              ngModel="{{ info?.descripcion }}"
+              name="descripcion"
+              class="form-control"
+              id="descripcion"
+              placeholder="descripción"
+            />
+          </div>
+          <div class="form-group">
+            <label for="fotoPerfil">URL de foto perfil</label>
+            <input
+              type="text"
+              ngModel="{{ info?.fotoPerfil }}"
+              name="fotoPerfil"
+              class="form-control"
+              id="fotoPerfil"
+              placeholder="URL de la imagen"
+            />
+          </div>
+          <div class="form-group">
+            <label for="ubicacion">URL de foto Portada</label>
+            <input
+              type="text"
+              ngModel="{{ info?.ubicacion }}"
+              name="ubicacion"
+              class="form-control"
+              id="ubicacion"
+              placeholder="URL de la imagen"
+            />
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              data-bs-dismiss="modal"
+              class="btn btn-danger"
+            >
+              Cerrar
+            </button>
+            <button
+              (click)="onUpdateInfo(editForm.value)"
+              data-bs-dismiss="modal"
+              class="btn btn-primary"
+            >
+              Guardar Cambios
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

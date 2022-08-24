@@ -1,0 +1,221 @@
+
+
+<!-- SI HAY TIEMPO OPTIMIZAR PC PARA AGREGAR CIRCLE PROGRESS -->
+<section class="contenedor">
+
+    <div class="contenedor__barraTitulo">
+        <h2>Hard y soft skills</h2>
+        <button type="button" class="Edit" *ngIf="isloged()"
+        (click)="onOpenModal('add')" data-bs-toggle="modal" data-bs-target="#addSkillModal">
+        <i class="fa-solid fa-plus"></i>
+       </button> 
+    </div>
+
+    <div class="skills-box" *ngFor="let skill of skills">
+        <div class="skills-title">
+        <div class="skills-img">
+         <img src="{{skill.imgSkill}}" alt="Url Invalida" id="tateti" class="skills-icons">
+         </div>
+         <div class="iconosEdicion">
+            <h3>{{skill.tituloSkill}}</h3>
+            <div class="iconosEdicion" *ngIf="isloged()">
+                <button class="Edit" (click)="onOpenModal('edit',skill)"><i class="fa-solid fa-pen"></i> <!-- click edit -->
+                </button>
+                <button class="Edit" (click)="onOpenModal('delete', skill)">
+                  <i class="fa-solid fa-trash"></i> </button><!-- click borrar -->
+              </div>
+        </div>
+         </div>
+        </div>
+
+</section>
+
+
+<!-- NOTIFICACION SIN INFORMACION -->
+<div
+  *ngIf="skills?.length == 0 && isloged()"
+  class="col-lg-12 col-md-12 col-xl-12"
+>
+  <div class="alert alert-info" role="alert">
+    <h4 class="alert-heading">No hay skills!</h4>
+    <p>No se encontró ninguna skill</p>
+  </div>
+</div>
+
+
+
+<!-- MODAL PARA AGREGAR SKILL -->
+<div
+  class="modal fade"
+  id="addSkillModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="addSkillModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addSkillModalLabel">
+          Agregar Educación
+        </h5>
+      </div>
+      <div class="modal-body">
+        <form #addForm="ngForm" (ngSubmit)="onAddSkill(addForm)">
+          <div class="form-group">
+            <label for="tituloSkill">Título</label>
+            <input
+              type="text"
+              ngModel
+              name="tituloSkill"
+              class="form-control"
+              id="tituloSkill"
+              placeholder="tituloSkill"
+              required
+            />
+          </div>
+    
+
+          <div class="form-group">
+            <label for="imgSkill">URL de la imagen</label>
+            <input
+              type="text"
+              ngModel
+              name="imgSkill"
+              class="form-control"
+              id=" imgSkill"
+              placeholder="URL de la imagen"
+              required
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              id="add-skill-form"
+              class="btn btn-danger"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              [disabled]="addForm.invalid"
+              type="submit"
+              class="btn btn-primary"
+            >
+              Guardar cambios
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PARA EDITAR SKILL -->
+
+<div
+  class="modal fade"
+  id="editSkillModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="skilleditModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateEducationModalLabel">
+          Editar Skill {{ editSkill?.tituloSkill }}
+        </h5>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm">
+          <div class="form-group">
+            <label for="name">Título</label>
+            <input
+              type="text"
+              ngModel="{{ editSkill?.tituloSkill }}"
+              name="tituloSkill"
+              class="form-control"
+              id="tituloSkill1"
+              aria-describedby="emailHelp"
+              placeholder="Titulo"
+            />
+          </div>
+          <input
+            type="hidden"
+            ngModel="{{ editSkill?.idSkill }}"
+            name="idSkill"
+            class="form-control"
+            id="idSkill1"
+            placeholder=""
+          />
+          <div class="form-group">
+            <label for="imgSkill">URL de imagen</label>
+            <input
+              type="text"
+              ngModel="{{ editSkill?.imgSkill }}"
+              name="imgSkill"
+              class="form-control"
+              id="imgSkill1"
+              placeholder="URL de imagen"
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              id="1"
+              data-bs-dismiss="modal"
+              class="btn btn-danger"
+            >
+              Cerrar
+            </button>
+            <button
+              (click)="onUpdateSkill(editForm.value)"
+              data-bs-dismiss="modal"
+              class="btn btn-primary"
+            >
+              Guardar Cambios
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--MODAL PARA ELIMINAR  -->
+<div
+  class="modal fade"
+  id="deleteSkillModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="deleteModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Borrar Skill</h5>
+      </div>
+      <div class="modal-body">
+        <p>
+          Estás seguro que quieres borrar
+          {{ deleteSkill?.tituloSkill }}?
+        </p>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            No
+          </button>
+          <button
+            (click)="onDeleteSkill(deleteSkill!.idSkill)"
+            class="btn btn-danger"
+            data-bs-dismiss="modal"
+          >
+            Si
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
